@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudentHub - Feedback</title>
+</head>
+
+<body>
+
+<header>
+    <h1>StudentHub</h1>
+
+    <nav aria-label="Main Navigation">
+        <a href="../index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="events.html">Events</a>
+        <a href="contact.html">Contact</a>
+        <a href="faq.html">FAQ</a>
+        <a href="feedback.html">Feedback</a>
+    </nav>
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Student Feedback</h2>
+
+        <form>
+
+            <label for="feedbackName">Name:</label>
+            <input type="text" id="feedbackName" name="feedbackName" required>
+
+            <br><br>
+
+            <label for="feedbackEmail">Email:</label>
+            <input type="email" id="feedbackEmail" name="feedbackEmail" required>
+
+            <br><br>
+
+            <label for="rating">Rating:</label>
+
+            <select id="rating" name="rating">
+                <option value="">Select Rating</option>
+                <option value="5">Excellent</option>
+                <option value="4">Very Good</option>
+                <option value="3">Good</option>
+                <option value="2">Average</option>
+                <option value="1">Poor</option>
+            </select>
+
+            <br><br>
+
+            <label for="feedback">Feedback:</label>
+            <br>
+
+            <textarea
+                id="feedback"
+                name="feedback"
+                rows="5"
+                cols="40"
+                placeholder="Enter your feedback">
+            </textarea>
+
+            <br><br>
+
+            <button type="submit">Submit Feedback</button>
+
+        </form>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>StudentHub &copy; 2026</p>
+</footer>
+
+</body>
+</html>
