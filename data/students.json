@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "name": "Aarav Patel",
+        "course": "AIML",
+        "year": 2
+    },
+    {
+        "id": 2,
+        "name": "Diya Shah",
+        "course": "CE",
+        "year": 1
+    },
+    {
+        "id": 3,
+        "name": "Vivaan Mehta",
+        "course": "IT",
+        "year": 3
+    },
+    {
+        "id": 4,
+        "name": "Anaya Desai",
+        "course": "AIML",
+        "year": 2
+    },
+    {
+        "id": 5,
+        "name": "Arjun Patel",
+        "course": "CE",
+        "year": 4
+    },
+    {
+        "id": 6,
+        "name": "Isha Shah",
+        "course": "IT",
+        "year": 1
+    },
+    {
+        "id": 7,
+        "name": "Kabir Joshi",
+        "course": "AIML",
+        "year": 3
+    },
+    {
+        "id": 8,
+        "name": "Riya Patel",
+        "course": "CE",
+        "year": 2
+    },
+    {
+        "id": 9,
+        "name": "Dev Mehta",
+        "course": "IT",
+        "year": 4
+    },
+    {
+        "id": 10,
+        "name": "Myra Shah",
+        "course": "AIML",
+        "year": 1
+    },
+    {
+        "id": 11,
+        "name": "Krish Desai",
+        "course": "CE",
+        "year": 3
+    },
+    {
+        "id": 12,
+        "name": "Aanya Patel",
+        "course": "IT",
+        "year": 2
+    },
+    {
+        "id": 13,
+        "name": "Dhruv Shah",
+        "course": "AIML",
+        "year": 4
+    },
+    {
+        "id": 14,
+        "name": "Kiara Mehta",
+        "course": "CE",
+        "year": 1
+    },
+    {
+        "id": 15,
+        "name": "Yash Patel",
+        "course": "IT",
+        "year": 3
+    }
+]

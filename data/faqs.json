@@ -1,0 +1,77 @@
+[
+    {
+        "id": 1,
+        "question": "What is StudentHub?",
+        "answer": "StudentHub is a portal for accessing academic and college information."
+    },
+    {
+        "id": 2,
+        "question": "How can I register?",
+        "answer": "Open the registration page and complete the student registration form."
+    },
+    {
+        "id": 3,
+        "question": "How can I login?",
+        "answer": "Open the login page and enter your registered credentials."
+    },
+    {
+        "id": 4,
+        "question": "Where can I view events?",
+        "answer": "College events are available on the Events page."
+    },
+    {
+        "id": 5,
+        "question": "Can I update my profile?",
+        "answer": "Yes, students can manage their profile information."
+    },
+    {
+        "id": 6,
+        "question": "Where can I check attendance?",
+        "answer": "Attendance information is available through the student dashboard."
+    },
+    {
+        "id": 7,
+        "question": "How can I view assignments?",
+        "answer": "Assignments can be accessed through the dashboard."
+    },
+    {
+        "id": 8,
+        "question": "Where can I see my results?",
+        "answer": "Academic results can be viewed from the student dashboard."
+    },
+    {
+        "id": 9,
+        "question": "How can I contact the college?",
+        "answer": "Use the Contact page to find contact information."
+    },
+    {
+        "id": 10,
+        "question": "What courses are available?",
+        "answer": "StudentHub provides information about AIML, CE and IT."
+    },
+    {
+        "id": 11,
+        "question": "Can faculty use StudentHub?",
+        "answer": "Yes, faculty members can access academic features."
+    },
+    {
+        "id": 12,
+        "question": "What does the admin manage?",
+        "answer": "The administrator manages users, courses, notices and events."
+    },
+    {
+        "id": 13,
+        "question": "Does StudentHub support mobile devices?",
+        "answer": "Yes, StudentHub uses responsive design for different screen sizes."
+    },
+    {
+        "id": 14,
+        "question": "Does StudentHub have dark mode?",
+        "answer": "Yes, users can switch between light and dark themes."
+    },
+    {
+        "id": 15,
+        "question": "How do I logout?",
+        "answer": "Use the logout option available after accessing your account."
+    }
+]

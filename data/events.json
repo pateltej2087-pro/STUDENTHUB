@@ -1,0 +1,107 @@
+[
+    {
+        "id": 1,
+        "title": "AI Workshop",
+        "category": "Technical",
+        "date": "2026-09-20",
+        "description": "Introduction to Artificial Intelligence and Machine Learning."
+    },
+    {
+        "id": 2,
+        "title": "Web Development Workshop",
+        "category": "Technical",
+        "date": "2026-09-22",
+        "description": "Learn HTML, CSS and JavaScript fundamentals."
+    },
+    {
+        "id": 3,
+        "title": "Cricket Tournament",
+        "category": "Sports",
+        "date": "2026-09-25",
+        "description": "Inter-department cricket tournament for students."
+    },
+    {
+        "id": 4,
+        "title": "Cultural Night",
+        "category": "Cultural",
+        "date": "2026-09-28",
+        "description": "Music, dance and cultural performances by students."
+    },
+    {
+        "id": 5,
+        "title": "Python Coding Contest",
+        "category": "Technical",
+        "date": "2026-10-01",
+        "description": "Test your Python programming and problem-solving skills."
+    },
+    {
+        "id": 6,
+        "title": "Football Championship",
+        "category": "Sports",
+        "date": "2026-10-03",
+        "description": "College football championship between departments."
+    },
+    {
+        "id": 7,
+        "title": "Garba Night",
+        "category": "Cultural",
+        "date": "2026-10-05",
+        "description": "Celebrate Navratri with traditional Garba."
+    },
+    {
+        "id": 8,
+        "title": "Cyber Security Seminar",
+        "category": "Technical",
+        "date": "2026-10-08",
+        "description": "Learn the basics of cybersecurity and online safety."
+    },
+    {
+        "id": 9,
+        "title": "Basketball Tournament",
+        "category": "Sports",
+        "date": "2026-10-10",
+        "description": "Student basketball competition."
+    },
+    {
+        "id": 10,
+        "title": "Photography Competition",
+        "category": "Cultural",
+        "date": "2026-10-12",
+        "description": "Show your photography skills and creativity."
+    },
+    {
+        "id": 11,
+        "title": "Data Science Seminar",
+        "category": "Technical",
+        "date": "2026-10-15",
+        "description": "Explore data science concepts and applications."
+    },
+    {
+        "id": 12,
+        "title": "Chess Competition",
+        "category": "Sports",
+        "date": "2026-10-18",
+        "description": "Individual chess competition for students."
+    },
+    {
+        "id": 13,
+        "title": "Music Competition",
+        "category": "Cultural",
+        "date": "2026-10-20",
+        "description": "Solo and group music performances."
+    },
+    {
+        "id": 14,
+        "title": "Hackathon",
+        "category": "Technical",
+        "date": "2026-10-22",
+        "description": "Build innovative software solutions in teams."
+    },
+    {
+        "id": 15,
+        "title": "Dance Competition",
+        "category": "Cultural",
+        "date": "2026-10-25",
+        "description": "College-level solo and group dance competition."
+    }
+]

@@ -1,26 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>StudentHub - FAQ</title>
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
 </head>
 
 <body>
 
 <header>
-    <h1>StudentHub</h1>
 
-    <nav aria-label="Main Navigation">
-        <a href="../index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="events.html">Events</a>
-        <a href="contact.html">Contact</a>
-        <a href="faq.html">FAQ</a>
-        <a href="feedback.html">Feedback</a>
-    </nav>
+    <div class="header-container">
+
+        <h1>StudentHub</h1>
+
+        <button id="menuButton"
+                class="menu-button"
+                aria-label="Open navigation menu">
+            ☰
+        </button>
+
+        <nav id="mainNavigation">
+
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
+            <a href="events.html">Events</a>
+            <a href="faq.html">FAQ</a>
+
+            <button id="themeButton"
+                    type="button">
+                🌙 Dark Mode
+            </button>
+
+        </nav>
+
+    </div>
+
 </header>
+
 
 <main>
 
@@ -28,42 +56,44 @@
 
         <h2>Frequently Asked Questions</h2>
 
-        <article>
-            <h3>What is StudentHub?</h3>
-            <p>
-                StudentHub is a centralized student portal
-                for academic and college information.
-            </p>
-        </article>
+        <p>
+            Search StudentHub frequently asked questions.
+        </p>
 
-        <article>
-            <h3>How can I register?</h3>
-            <p>
-                You can create an account using the Register page.
-            </p>
-        </article>
 
-        <article>
-            <h3>How can I access my dashboard?</h3>
-            <p>
-                Login using your registered credentials.
-            </p>
-        </article>
+        <div class="data-controls">
 
-        <article>
-            <h3>Who can use StudentHub?</h3>
-            <p>
-                Students, faculty members, and administrators can use StudentHub.
-            </p>
-        </article>
+            <input type="search"
+                   id="faqSearch"
+                   placeholder="Search FAQs..."
+                   aria-label="Search FAQs">
+
+        </div>
+
+
+        <div id="dynamicFaqList">
+
+            <p>Loading FAQs...</p>
+
+        </div>
 
     </section>
 
 </main>
 
+
 <footer>
-    <p>StudentHub &copy; 2026</p>
+
+    <p>
+        StudentHub &copy; 2026
+    </p>
+
 </footer>
 
+
+<script src="../js/script.js"></script>
+<script src="../js/data.js"></script>
+
 </body>
+
 </html>

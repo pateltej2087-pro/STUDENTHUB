@@ -2,103 +2,221 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>StudentHub - Events</title>
 
-    <link rel="stylesheet" href="../css/style.css">
-
+    <link rel="stylesheet"
+          href="../css/style.css">
 </head>
 
 <body>
 
 <header>
+    <div class="header-container">
 
-    <h1>StudentHub</h1>
+        <h1>StudentHub</h1>
 
-    <nav aria-label="Main Navigation">
+        <button id="menuButton"
+                class="menu-button"
+                aria-label="Open navigation menu">
+            ☰
+        </button>
 
-        <a href="../index.html">Home</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="events.html">Events</a>
-        <a href="profile.html">Profile</a>
-        <a href="contact.html">Contact</a>
-        <a href="faq.html">FAQ</a>
+        <nav id="mainNavigation">
 
-    </nav>
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
+            <a href="events.html">Events</a>
+            <a href="faq.html">FAQ</a>
 
+            <button id="themeButton"
+                    type="button">
+                🌙 Dark Mode
+            </button>
+
+        </nav>
+
+    </div>
 </header>
 
 
 <main>
 
+    <!-- EVENTS -->
+
     <section>
 
         <h2>College Events</h2>
 
+        <p>
+            Search, filter and sort upcoming college events.
+        </p>
 
-        <div class="event-container">
+        <div class="data-controls">
+
+            <input type="search"
+                   id="eventSearch"
+                   placeholder="Search events..."
+                   aria-label="Search events">
+
+            <select id="categoryFilter"
+                    aria-label="Filter event category">
+
+                <option value="All">
+                    All Categories
+                </option>
+
+                <option value="Technical">
+                    Technical
+                </option>
+
+                <option value="Sports">
+                    Sports
+                </option>
+
+                <option value="Cultural">
+                    Cultural
+                </option>
+
+            </select>
+
+            <select id="eventSort"
+                    aria-label="Sort events">
+
+                <option value="">
+                    Sort Events
+                </option>
+
+                <option value="az">
+                    Name A-Z
+                </option>
+
+                <option value="za">
+                    Name Z-A
+                </option>
+
+                <option value="date">
+                    Date
+                </option>
+
+            </select>
+
+        </div>
 
 
-            <article class="event-card">
+        <div id="eventList"
+             class="data-grid">
 
-                <h3>Technical Workshop</h3>
+            <p>Loading events...</p>
 
-                <p>
-                    Date: 15 August 2026
-                </p>
-
-                <p>
-                    Workshop on modern web development
-                    technologies.
-                </p>
-
-                <button type="button">
-                    View Details
-                </button>
-
-            </article>
+        </div>
 
 
-            <article class="event-card">
+        <div class="pagination">
 
-                <h3>Sports Day</h3>
+            <button id="previousPage"
+                    type="button">
+                Previous
+            </button>
 
-                <p>
-                    Date: 25 August 2026
-                </p>
+            <span id="pageInfo">
+                Page 1
+            </span>
 
-                <p>
-                    Annual college sports activities.
-                </p>
+            <button id="nextPage"
+                    type="button">
+                Next
+            </button>
 
-                <button type="button">
-                    View Details
-                </button>
+        </div>
 
-            </article>
+    </section>
 
 
-            <article class="event-card">
+    <!-- STUDENTS -->
 
-                <h3>Student Orientation</h3>
+    <section>
 
-                <p>
-                    Date: 1 September 2026
-                </p>
+        <h2>Student Profiles</h2>
 
-                <p>
-                    Orientation programme for students.
-                </p>
+        <p>
+            Search, filter and sort student profiles.
+        </p>
 
-                <button type="button">
-                    View Details
-                </button>
 
-            </article>
+        <div class="data-controls">
 
+            <!-- SEARCH -->
+
+            <input type="search"
+                   id="studentSearch"
+                   placeholder="Search student..."
+                   aria-label="Search students">
+
+
+            <!-- COURSE FILTER -->
+
+            <select id="courseFilter"
+                    aria-label="Filter students by course">
+
+                <option value="All">
+                    All Courses
+                </option>
+
+                <option value="AIML">
+                    AIML
+                </option>
+
+                <option value="CE">
+                    CE
+                </option>
+
+                <option value="IT">
+                    IT
+                </option>
+
+            </select>
+
+
+            <!-- SORT -->
+
+            <select id="studentSort"
+                    aria-label="Sort students">
+
+                <option value="">
+                    Sort Students
+                </option>
+
+                <option value="az">
+                    Name A-Z
+                </option>
+
+                <option value="za">
+                    Name Z-A
+                </option>
+
+                <option value="yearLow">
+                    Year Low-High
+                </option>
+
+                <option value="yearHigh">
+                    Year High-Low
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <div id="studentList"
+             class="student-grid">
+
+            <p>Loading students...</p>
 
         </div>
 
@@ -109,10 +227,15 @@
 
 <footer>
 
-    <p>StudentHub &copy; 2026</p>
+    <p>
+        StudentHub &copy; 2026
+    </p>
 
 </footer>
 
-</body>
 
+<script src="../js/script.js"></script>
+<script src="../js/data.js"></script>
+
+</body>
 </html>

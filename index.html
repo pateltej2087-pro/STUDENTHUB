@@ -2,47 +2,175 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>StudentHub - Home</title>
 
     <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
 
+<!-- =====================================
+     NOTIFICATION BANNER
+===================================== -->
+
+<div id="notificationBanner" class="notification-banner">
+
+    <p>
+        📢 New college events have been added!
+    </p>
+
+    <button id="closeNotification">
+        ✕
+    </button>
+
+</div>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
 <header>
 
-    <h1>StudentHub</h1>
+    <div class="header-container">
 
-    <nav aria-label="Main Navigation">
-        <a href="index.html">Home</a>
-        <a href="pages/about.html">About</a>
-        <a href="pages/register.html">Register</a>
-        <a href="pages/login.html">Login</a>
-        <a href="pages/events.html">Events</a>
-        <a href="pages/contact.html">Contact</a>
-        <a href="pages/faq.html">FAQ</a>
-        <a href="pages/feedback.html">Feedback</a>
-    </nav>
+        <h1>StudentHub</h1>
+
+        <button id="menuButton"
+                class="menu-button"
+                aria-label="Open navigation menu">
+
+            ☰
+
+        </button>
+
+        <nav id="mainNavigation"
+             aria-label="Main Navigation">
+
+            <a href="index.html">Home</a>
+
+            <a href="pages/about.html">About</a>
+
+            <a href="pages/register.html">Register</a>
+
+            <a href="pages/login.html">Login</a>
+
+            <a href="pages/events.html">Events</a>
+
+            <a href="pages/contact.html">Contact</a>
+
+            <a href="pages/faq.html">FAQ</a>
+
+            <a href="pages/feedback.html">Feedback</a>
+
+            <button id="themeButton">
+                🌙 Dark Mode
+            </button>
+
+        </nav>
+
+    </div>
 
 </header>
 
+
+<!-- =====================================
+     MAIN CONTENT
+===================================== -->
+
 <main>
+
+
+    <!-- HERO -->
 
     <section class="hero">
 
         <h2>StudentHub Portal</h2>
 
-        <p>Your Academic Information Hub</p>
+        <p>
+            Your Academic Information Hub
+        </p>
 
-        <a href="pages/login.html" class="button">
+        <button class="action-button">
             Get Started
-        </a>
+        </button>
 
     </section>
 
+
+    <!-- =================================
+         CONTENT SLIDER
+    ================================== -->
+
+    <section>
+
+        <h2>StudentHub Highlights</h2>
+
+        <div class="slider">
+
+            <article class="slide active-slide">
+
+                <h3>Academic Information</h3>
+
+                <p>
+                    Access your academic information
+                    from one central portal.
+                </p>
+
+            </article>
+
+
+            <article class="slide">
+
+                <h3>College Events</h3>
+
+                <p>
+                    Stay updated with upcoming
+                    college events.
+                </p>
+
+            </article>
+
+
+            <article class="slide">
+
+                <h3>Student Profile</h3>
+
+                <p>
+                    View and manage your student
+                    profile easily.
+                </p>
+
+            </article>
+
+        </div>
+
+
+        <div class="slider-buttons">
+
+            <button id="previousSlide">
+                Previous
+            </button>
+
+            <button id="nextSlide">
+                Next
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         FEATURES
+    ================================== -->
 
     <section>
 
@@ -50,13 +178,14 @@
 
         <div class="feature-container">
 
+
             <article class="feature-card">
 
                 <h3>Academic Information</h3>
 
                 <p>
-                    Access important academic information
-                    in one place.
+                    Access important academic
+                    information in one place.
                 </p>
 
             </article>
@@ -79,10 +208,12 @@
                 <h3>Student Profile</h3>
 
                 <p>
-                    View and manage your student profile.
+                    View and manage your student
+                    profile.
                 </p>
 
             </article>
+
 
         </div>
 
@@ -90,11 +221,21 @@
 
 </main>
 
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
 <footer>
 
-    <p>StudentHub &copy; 2026</p>
+    <p>
+        StudentHub &copy; 2026
+    </p>
 
 </footer>
+
+
+<script src="js/script.js"></script>
 
 </body>
 
