@@ -16,31 +16,33 @@
 
 <header>
     <div class="header-container">
-
         <h1>StudentHub</h1>
 
-        <button id="menuButton"
-                class="menu-button"
-                aria-label="Open navigation menu">
+        <button
+            id="menuButton"
+            class="menu-button"
+            type="button"
+            aria-label="Toggle navigation menu"
+        >
             ☰
         </button>
 
-        <nav id="mainNavigation">
-
+        <nav id="mainNavigation" aria-label="Main Navigation">
             <a href="../index.html">Home</a>
             <a href="about.html">About</a>
             <a href="register.html">Register</a>
             <a href="login.html">Login</a>
+            <a href="dashboard.php">Student Dashboard</a>
+            <a href="admin.php">Admin Dashboard</a>
             <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
             <a href="faq.html">FAQ</a>
+            <a href="feedback.html">Feedback</a>
 
-            <button id="themeButton"
-                    type="button">
-                🌙 Dark Mode
+            <button id="themeButton" type="button">
+                Dark Mode
             </button>
-
         </nav>
-
     </div>
 </header>
 
@@ -54,7 +56,7 @@
         <h2>College Events</h2>
 
         <p>
-            Search, filter and sort upcoming college events.
+            Browse college events, view their status, and search, filter or sort the list.
         </p>
 
         <div class="data-controls">
@@ -142,11 +144,12 @@
 
     <section>
 
-        <h2>Student Profiles</h2>
+        <h2>Sample Student Profiles</h2>
 
         <p>
-            Search, filter and sort student profiles.
-        </p>
+    Demonstration profiles loaded from sample JSON data.
+    These are separate from registered student accounts.
+</p>
 
 
         <div class="data-controls">

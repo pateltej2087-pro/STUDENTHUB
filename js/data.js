@@ -8,353 +8,280 @@
 // EVENTS
 // ==========================================
 
-const eventList =
-    document.getElementById("eventList");
-
+const eventList = document.getElementById("eventList");
 
 if (eventList) {
-
     let allEvents = [];
     let filteredEvents = [];
-
     let currentPage = 1;
 
     const recordsPerPage = 5;
 
+    const eventSearch = document.getElementById("eventSearch");
+    const categoryFilter = document.getElementById("categoryFilter");
+    const eventSort = document.getElementById("eventSort");
+    const previousPage = document.getElementById("previousPage");
+    const nextPage = document.getElementById("nextPage");
+    const pageInfo = document.getElementById("pageInfo");
 
-    const eventSearch =
-        document.getElementById("eventSearch");
+    eventList.setAttribute("aria-live", "polite");
 
-    const categoryFilter =
-        document.getElementById("categoryFilter");
+    previousPage.disabled = true;
+    nextPage.disabled = true;
 
-    const eventSort =
-        document.getElementById("eventSort");
+    function showEventMessage(text, isError = false) {
+        eventList.replaceChildren();
 
-    const previousPage =
-        document.getElementById("previousPage");
+        const paragraph = document.createElement("p");
+        paragraph.textContent = text;
 
-    const nextPage =
-        document.getElementById("nextPage");
+        if (isError) {
+            paragraph.className = "error-message";
+        }
 
-    const pageInfo =
-        document.getElementById("pageInfo");
+        eventList.appendChild(paragraph);
+    }
 
+    function addEventDetail(card, label, value) {
+        const paragraph = document.createElement("p");
+        const heading = document.createElement("strong");
 
-    // FETCH JSON
+        heading.textContent = label + ": ";
 
-    fetch("../data/events.json")
+        paragraph.append(
+            heading,
+            document.createTextNode(String(value))
+        );
 
-        .then(function (response) {
-
-            if (!response.ok) {
-
-                throw new Error(
-                    "Could not load events."
-                );
-
-            }
-
-            return response.json();
-
-        })
-
-        .then(function (data) {
-
-            allEvents = data;
-
-            filteredEvents = [...data];
-
-            renderEvents();
-
-        })
-
-        .catch(function (error) {
-
-            eventList.innerHTML =
-                "<p class='error-message'>Error loading events.</p>";
-
-            console.error(error);
-
-        });
-
-
-    // RENDER EVENTS
+        card.appendChild(paragraph);
+    }
 
     function renderEvents() {
-
-        eventList.innerHTML = "";
-
+        eventList.replaceChildren();
 
         if (filteredEvents.length === 0) {
+            showEventMessage("No events found.");
 
-            eventList.innerHTML =
-                "<p>No events found.</p>";
-
-            pageInfo.textContent =
-                "Page 0 of 0";
-
+            pageInfo.textContent = "Page 0 of 0";
             previousPage.disabled = true;
-
             nextPage.disabled = true;
 
             return;
-
         }
 
+        const totalPages = Math.ceil(
+            filteredEvents.length / recordsPerPage
+        );
 
-        const totalPages =
-            Math.ceil(
-                filteredEvents.length /
-                recordsPerPage
-            );
+        currentPage = Math.max(
+            1,
+            Math.min(currentPage, totalPages)
+        );
 
+        const start = (currentPage - 1) * recordsPerPage;
 
-        if (currentPage > totalPages) {
+        const pageEvents = filteredEvents.slice(
+            start,
+            start + recordsPerPage
+        );
 
-            currentPage = totalPages;
+        pageEvents.forEach(function (event) {
+            const card = document.createElement("article");
+            card.className = "data-card";
 
-        }
+            const title = document.createElement("h3");
+            title.textContent = event.title;
 
+            card.appendChild(title);
 
-        const start =
-            (currentPage - 1) *
-            recordsPerPage;
+            if (
+                typeof event.poster_filename === "string" &&
+                /^[a-f0-9]{32}\.(jpg|png|webp)$/.test(
+                    event.poster_filename
+                )
+            ) {
+                const image = document.createElement("img");
 
+                image.src =
+                    "../uploads/posters/" + event.poster_filename;
 
-        const end =
-            start + recordsPerPage;
+                image.alt = event.title + " poster";
+                image.loading = "lazy";
+                image.style.maxWidth = "100%";
+                image.style.height = "auto";
 
+                card.appendChild(image);
+            }
 
-        // PAGINATION
+            addEventDetail(card, "Category", event.category);
+            addEventDetail(card, "Date", event.date);
 
-        const pageEvents =
-            filteredEvents.slice(
-                start,
-                end
-            );
+            let statusLabel = "Closed";
 
+            if (event.status === "open") {
+                statusLabel = "Open";
+            }
 
-        // MAP AND RENDER
+            addEventDetail(card, "Status", statusLabel);
 
-        eventList.innerHTML =
-            pageEvents.map(
-                function (event) {
+            const description = document.createElement("p");
+            description.textContent = event.description;
 
-                    return `
-                        <article class="data-card">
-
-                            <h3>
-                                ${event.title}
-                            </h3>
-
-                            <p>
-                                <strong>
-                                    Category:
-                                </strong>
-
-                                ${event.category}
-                            </p>
-
-                            <p>
-                                <strong>
-                                    Date:
-                                </strong>
-
-                                ${event.date}
-                            </p>
-
-                            <p>
-                                ${event.description}
-                            </p>
-
-                        </article>
-                    `;
-
-                }
-            ).join("");
-
+            card.appendChild(description);
+            eventList.appendChild(card);
+        });
 
         pageInfo.textContent =
-            "Page " +
-            currentPage +
-            " of " +
-            totalPages;
+            "Page " + currentPage + " of " + totalPages;
 
-
-        previousPage.disabled =
-            currentPage === 1;
-
-
-        nextPage.disabled =
-            currentPage === totalPages;
-
+        previousPage.disabled = currentPage === 1;
+        nextPage.disabled = currentPage === totalPages;
     }
-
-
-    // SEARCH + FILTER + SORT
 
     function updateEvents() {
+        const searchValue = eventSearch.value
+            .trim()
+            .toLowerCase();
 
-        const searchValue =
-            eventSearch.value
-                .toLowerCase()
-                .trim();
+        const categoryValue = categoryFilter.value;
 
+        filteredEvents = allEvents.filter(function (event) {
+            const searchableText = [
+                event.title,
+                event.category,
+                event.description
+            ].join(" ").toLowerCase();
 
-        const categoryValue =
-            categoryFilter.value;
+            const searchMatch =
+                searchableText.includes(searchValue);
 
+            const categoryMatch =
+                categoryValue === "All" ||
+                event.category === categoryValue;
 
-        filteredEvents =
-            allEvents.filter(
-                function (event) {
-
-                    const searchMatch =
-                        event.title
-                            .toLowerCase()
-                            .includes(
-                                searchValue
-                            );
-
-
-                    const categoryMatch =
-                        categoryValue === "All" ||
-                        event.category ===
-                        categoryValue;
-
-
-                    return (
-                        searchMatch &&
-                        categoryMatch
-                    );
-
-                }
-            );
-
-
-        // A-Z
+            return searchMatch && categoryMatch;
+        });
 
         if (eventSort.value === "az") {
+            filteredEvents.sort(function (a, b) {
+                return a.title.localeCompare(b.title);
+            });
 
-            filteredEvents.sort(
-                function (a, b) {
+        } else if (eventSort.value === "za") {
+            filteredEvents.sort(function (a, b) {
+                return b.title.localeCompare(a.title);
+            });
 
-                    return a.title.localeCompare(
-                        b.title
-                    );
-
-                }
-            );
-
+        } else if (eventSort.value === "date") {
+            filteredEvents.sort(function (a, b) {
+                return a.date.localeCompare(b.date);
+            });
         }
-
-
-        // Z-A
-
-        if (eventSort.value === "za") {
-
-            filteredEvents.sort(
-                function (a, b) {
-
-                    return b.title.localeCompare(
-                        a.title
-                    );
-
-                }
-            );
-
-        }
-
-
-        // DATE
-
-        if (eventSort.value === "date") {
-
-            filteredEvents.sort(
-                function (a, b) {
-
-                    return (
-                        new Date(a.date) -
-                        new Date(b.date)
-                    );
-
-                }
-            );
-
-        }
-
 
         currentPage = 1;
-
         renderEvents();
-
     }
 
+    function loadCategoryOptions() {
+        const selectedCategory = categoryFilter.value;
 
-    eventSearch.addEventListener(
-        "input",
-        updateEvents
-    );
+        categoryFilter.replaceChildren();
 
+        const allOption = document.createElement("option");
+        allOption.value = "All";
+        allOption.textContent = "All Categories";
 
-    categoryFilter.addEventListener(
-        "change",
-        updateEvents
-    );
+        categoryFilter.appendChild(allOption);
 
+        const categories = [
+            ...new Set(allEvents.map(function (event) {
+                return event.category;
+            }))
+        ].sort(function (a, b) {
+            return a.localeCompare(b);
+        });
 
-    eventSort.addEventListener(
-        "change",
-        updateEvents
-    );
+        categories.forEach(function (category) {
+            const option = document.createElement("option");
 
+            option.value = category;
+            option.textContent = category;
 
-    // PREVIOUS PAGE
+            categoryFilter.appendChild(option);
+        });
 
-    previousPage.addEventListener(
-        "click",
-        function () {
-
-            if (currentPage > 1) {
-
-                currentPage--;
-
-                renderEvents();
-
-            }
-
+        if (categories.includes(selectedCategory)) {
+            categoryFilter.value = selectedCategory;
         }
-    );
+    }
 
+    eventSearch.addEventListener("input", updateEvents);
+    categoryFilter.addEventListener("change", updateEvents);
+    eventSort.addEventListener("change", updateEvents);
 
-    // NEXT PAGE
+    previousPage.addEventListener("click", function () {
+        if (currentPage > 1) {
+            currentPage--;
+            renderEvents();
+        }
+    });
 
-    nextPage.addEventListener(
-        "click",
-        function () {
+    nextPage.addEventListener("click", function () {
+        const totalPages = Math.ceil(
+            filteredEvents.length / recordsPerPage
+        );
 
-            const totalPages =
-                Math.ceil(
-                    filteredEvents.length /
-                    recordsPerPage
+        if (currentPage < totalPages) {
+            currentPage++;
+            renderEvents();
+        }
+    });
+
+    async function loadPublicEvents() {
+        showEventMessage("Loading events...");
+
+        try {
+            const response = await fetch(
+                "../php/api/public_events.php",
+                { cache: "no-store" }
+            );
+
+            const result = await response.json();
+
+            if (
+                !response.ok ||
+                result.success !== true ||
+                !Array.isArray(result.data)
+            ) {
+                throw new Error(
+                    result.message || "Unable to load events."
                 );
-
-
-            if (currentPage < totalPages) {
-
-                currentPage++;
-
-                renderEvents();
-
             }
 
+            allEvents = result.data;
+
+            loadCategoryOptions();
+            updateEvents();
+
+        } catch (error) {
+            allEvents = [];
+            filteredEvents = [];
+
+            showEventMessage(
+                "Unable to load events. Please refresh and try again.",
+                true
+            );
+
+            pageInfo.textContent = "Events unavailable";
+            previousPage.disabled = true;
+            nextPage.disabled = true;
+
+            console.error("Public events error:", error);
         }
-    );
+    }
 
+    loadPublicEvents();
 }
-
-
 // ==========================================
 // STUDENTS
 // ==========================================

@@ -373,7 +373,7 @@ if (registrationForm) {
     // special character
 
     const passwordRegex =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,72}$/;
 
 
     // ======================================
@@ -472,7 +472,7 @@ if (registrationForm) {
         }
 
 
-        if (!emailRegex.test(value)) {
+        if (value.length > 254 || !emailRegex.test(value)) {
 
             showError(
                 email,

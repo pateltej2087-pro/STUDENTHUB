@@ -2,101 +2,117 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>StudentHub - Login</title>
 
     <link rel="stylesheet" href="../css/style.css">
-
 </head>
 
 <body>
-
 <header>
+    <div class="header-container">
+        <h1>StudentHub</h1>
 
-    <h1>StudentHub</h1>
+        <button
+            id="menuButton"
+            class="menu-button"
+            type="button"
+            aria-label="Toggle navigation menu"
+        >
+            ☰
+        </button>
 
-    <nav aria-label="Main Navigation">
+        <nav id="mainNavigation" aria-label="Main Navigation">
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="register.html">Register</a>
+            <a href="login.html">Login</a>
+            <a href="dashboard.php">Student Dashboard</a>
+            <a href="admin.php">Admin Dashboard</a>
+            <a href="events.html">Events</a>
+            <a href="contact.html">Contact</a>
+            <a href="faq.html">FAQ</a>
+            <a href="feedback.html">Feedback</a>
 
-        <a href="../index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="register.html">Register</a>
-        <a href="login.html">Login</a>
-        <a href="events.html">Events</a>
-        <a href="contact.html">Contact</a>
-        <a href="faq.html">FAQ</a>
-        <a href="feedback.html">Feedback</a>
-
-    </nav>
-
+            <button id="themeButton" type="button">
+                Dark Mode
+            </button>
+        </nav>
+    </div>
 </header>
 
-
 <main>
-
     <section>
-
         <h2>Login</h2>
 
-        <form>
+        <p id="loginMessage" role="status" aria-live="polite"></p>
+
+        <form action="../php/login.php" method="POST">
 
             <div class="form-group">
-
-                <label for="loginEmail">
-                    Email
-                </label>
+                <label for="loginEmail">Email</label>
 
                 <input
                     type="email"
                     id="loginEmail"
                     name="loginEmail"
+                    autocomplete="username"
+                    maxlength="254"
                     required
                 >
-
             </div>
 
-
             <div class="form-group">
-
-                <label for="loginPassword">
-                    Password
-                </label>
+                <label for="loginPassword">Password</label>
 
                 <input
                     type="password"
                     id="loginPassword"
                     name="loginPassword"
+                    autocomplete="current-password"
+                    maxlength="72"
                     required
                 >
-
             </div>
 
-
-            <button type="submit">
-                Login
-            </button>
+            <button type="submit">Login</button>
 
         </form>
-
 
         <p>
             Don't have an account?
             <a href="register.html">Register</a>
         </p>
-
     </section>
-
 </main>
 
-
 <footer>
-
     <p>StudentHub &copy; 2026</p>
-
 </footer>
-<script src="../js/script.js"></script>
-</body>
 
+<script src="../js/script.js"></script>
+
+<script>
+    const loginStatus =
+        new URLSearchParams(window.location.search).get("status");
+
+    const loginMessages = new Map([
+        ["invalid", "Invalid email or password."],
+        ["required", "Please enter your email and password."],
+        ["timeout", "Your session expired. Please log in again."],
+        ["logout", "You have logged out successfully."],
+        ["error", "Login is unavailable. Please try again later."]
+    ]);
+
+    if (loginMessages.has(loginStatus)) {
+        document.getElementById("loginMessage").textContent =
+            loginMessages.get(loginStatus);
+    }
+</script>
+
+</body>
 </html>

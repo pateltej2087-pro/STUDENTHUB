@@ -1,0 +1,10 @@
+# Local registration records
+/php/registrations.csv
+
+# Runtime logs
+*.log
+
+# Editor and operating system files
+.vscode/
+Thumbs.db
+.DS_Store
